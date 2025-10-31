@@ -37,13 +37,13 @@ If you have ideas for useful commands or features, feel free to open an issue to
 
 ## Basic Roadmap
 
-- [x] Add download script
-- [x] Add basic printable commands
-- [x] Add `emot` command
+- [ ] Add basic printable commands
+- [ ] Add download script
+- [ ] Add `emot` command
 
 ## Macro Command Roadmap
 
-- [x] Add `macropy` command
+- [ ] Add `macropy` command
 - [ ] Add reload command for user functions *
 - [ ] Add delete command for user functions *
 - [ ] Add `macroc` command
