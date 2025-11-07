@@ -4,9 +4,9 @@ Marvina is a personal assistant designed to automate tasks or create macros in P
 
 ## Commands
 
-| Command          | Description                                                                                                                                                                                                 |
-|---|---|
-| | |
+| Command | Description |
+| --- | --- |
+|  |  |
 
 ## Download
 
@@ -14,13 +14,21 @@ Not now, wait a moment
 
 ## User Contributions
 
-If you have ideas for useful commands or features, feel free to open an issue to present your suggestion!
+If you have ideas for useful commands or features, feel free to open an issue to present your suggestion ! If the idea you suggest is not universal, give it as an add-on.
 
 ## Basic Roadmap
 
 - [ ] Add basic printable commands like `bbl`, `albbl`, ou `show`
 - [ ] Add download script with export in PATH
 - [ ] Add `emot` command
+
+## Command Roadmap
+
+- [ ] Add `shutdown` command
+- [ ] Add `reboot` command
+- [ ] Add `timer` command
+- [ ] Add `date` commande with flag for syntaxe
+- [ ] Add basic universal commands (based on user ideas)
 
 ## Macro Command Roadmap
 
@@ -31,14 +39,6 @@ If you have ideas for useful commands or features, feel free to open an issue to
 - [ ] Add `macrocpp` command
 - [ ] Add `macrosh` command
 - [ ] Add `macroasm` command
-
-## Command Roadmap
-
-- [ ] Add `shutdown` command
-- [ ] Add `reboot` command
-- [ ] Add `timer` command
-- [ ] Add `date` commande with flag for syntaxe
-- [ ] Add basic universal commands (based on user ideas)
 
 ## Other (If Time Permits)
 
