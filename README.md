@@ -24,15 +24,16 @@ make build
 
 If you have ideas for useful commands or features, feel free to open an issue to present your suggestion ! If the idea you suggest is not universal, give it as an add-on.
 
-## Basic Roadmap
+## Principal Roadmap
 
-- [ ] Add basic printable commands like `bbl`, `albbl`, ou `show`
 - [x] Add download script with export in PATH
 - [ ] Add graphic annotation to the build and remove functions
+- [ ] Add PWD variable in the Makefile for a deinstall command more powerful
+
+## Basic Command Roadmap
+
+- [ ] Add basic printable commands like `bbl`, `albbl`, ou `show`
 - [ ] Add `emot` command
-
-## Command Roadmap
-
 - [ ] Add `shutdown` command
 - [ ] Add `reboot` command
 - [ ] Add `timer` command
