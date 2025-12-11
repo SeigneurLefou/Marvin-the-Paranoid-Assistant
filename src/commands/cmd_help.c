@@ -4,6 +4,6 @@ int cmd_help(int argc, char **argv)
 {
 	(void)argc;
 	(void)argv;
-	write(1, "help\0", 5);
+	write(1, "help", 4);
 	return (0);
 }
