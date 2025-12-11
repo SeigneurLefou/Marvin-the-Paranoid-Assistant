@@ -1,7 +1,9 @@
 #!/bin/bash
+# Move to home
+cd ~
 # Clone the repo
 git clone https://www.github.com/SeigneurLefou/Marvin-the-Paranoid-Assistant .marvin
-# Move in the folder
+# Move to .marvin
 cd .marvin
 # Build the binary
 make build
