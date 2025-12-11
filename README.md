@@ -18,11 +18,13 @@ git clone https://www.github.com/SeigneurLefou/Marvin-the-Paranoid-Assistant .ma
 cd .marvin
 # Build the binary
 make build
+# Add .local/bin to the PATH
+export PATH=$PATH:$HOME/.local/bin/
 ```
 
 If it doesn't work add this command to your config file :
 ```
-export PATH = $PATH:.local/bin/
+export PATH=$PATH:$HOME/.local/bin/
 ```
 
 ## User Contributions
