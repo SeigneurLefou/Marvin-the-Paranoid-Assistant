@@ -10,16 +10,9 @@ Marvin is a personal assistant designed to automate tasks or create macros in Py
 
 ## Download
 
-For download Marvin you need to use this command in your shell terminal.
+To download Marvin you can use this command in your shell terminal.
 ```bash
-# Clone the repo
-git clone https://www.github.com/SeigneurLefou/Marvin-the-Paranoid-Assistant .marvin
-# Move in the folder
-cd .marvin
-# Build the binary
-make build
-# Add .local/bin to the PATH
-export PATH=$PATH:$HOME/.local/bin/
+curl https://raw.githubusercontent.com/SeigneurLefou/Marvin-the-Paranoid-Assistant/refs/heads/main/install.sh | sh
 ```
 
 If it doesn't work add this command to your config file :
