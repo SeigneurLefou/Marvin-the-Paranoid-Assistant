@@ -56,6 +56,7 @@ path :
 
 
 build : re
+	export PATH=$PATH:$HOME/.local/bin/
 	echo "You can enjoy now"
 
 update :
