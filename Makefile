@@ -15,23 +15,25 @@ SRC =   $(DS)printable.c \
         $(DS)cmd_help.c \
         $(DS)cmd_update.c \
 
-CMD_EXE = bbl
+CMD_LIST =	bbl
 
-CMD_SRC = $(addprefix $(CMD)cmd_,$(addsuffix .c,$(CMD_EXE)))
+CMD_SRC = $(addprefix $(CMD)cmd_,$(addsuffix .c,$(CMD_LIST)))
+
+CMD_EXE = $(addprefix $(BIN),$(CMD_LIST))
 
 # =============================================================================
 
 # === OBJECT RULES ============================================================
-OBJ = $(patsubst $(DS)%.c,$(DB)%.o,$(SRC))
+OBJ = $(patsubst $(DS)%.c,$(BUILD)%.o,$(SRC))
 
-$(DB)%.o : $(DS)%.c
-	mkdir -p $(@D)
+$(BUILD)%.o : $(DS)%.c
+	mkdir -p $(BUILD)
 	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
 # === CLEAN RULES =============================================================
 
 clean : 
-	rm -Rf "$(HOME)/$(MARV)/$(BUILD)"
+	rm -Rf "$(HOME)/$(MARV)$(BUILD)"
 
 fclean : clean
 	rm -f $(HOME)/.local/bin/$(EXE)
@@ -47,11 +49,11 @@ uninstall : remove
 $(EXE) : $(OBJ)
 	$(CC) $(CFLAGS) $(INCLUDE)  main.c $(OBJ) -o $(EXE)
 
-$(addprefix $(BIN),$(EXTRA_CMDS)) : $(DB)cmd_%.o $(OBJ)
-	@mkdir -p $(@D)
-	$(CC) $(CFLAGS) $(INCLUDE) $(DB)cmd_$*.o $(OBJ) -o $@
+$(CMD_EXE) : $(CMD_SRC)
+	@mkdir -p $(BIN)
+	$(CC) $(CFLAGS) $(INCLUDE) $< $(OBJ) -o $@
 
-build : $(EXE) $(addprefix $(BIN),$(EXTRA_CMDS))
+build : $(EXE) $(CMD_EXE)
 	mv $(EXE) $(HOME)/.local/bin/
 	export PATH=$(PATH):$(HOME)/.local/bin/
 	@echo "You can enjoy now"

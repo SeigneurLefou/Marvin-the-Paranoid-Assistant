@@ -13,7 +13,7 @@ int	main(int argc, char **argv)
 	emot = "neutral";
 	llen = 30;
 	fd = 1;
-	while (argv[i] && i < (size_t) argc)
+	while (argv[i] && i < argc)
 	{
 		if ((!strcmp(argv[i], "-t")
 			|| strcmp(argv[i], "--text")) && argv[i + 1])
