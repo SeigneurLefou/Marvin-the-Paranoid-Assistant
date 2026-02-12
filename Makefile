@@ -66,7 +66,7 @@ $(CMD_LIST):
 $(EXE): $(OBJ)
 	$(CC) $(CFLAGS) $(INCLUDE)  main.c $(OBJ) -o $(EXE)
 
-build: $(EXE)
+build: $(EXE) bin
 	mv $(EXE) $(HOME)/.local/bin/
 	@echo "You can enjoy now"
 
