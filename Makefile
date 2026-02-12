@@ -33,11 +33,11 @@ $(BUILD)%.o: $(DS)%.c
 
 # === UTILS RULES =============================================================
 
-re: fclean all bin
-
-all: $(EXE) build
+all: build
 
 bin: $(CMD_LIST)
+
+re: fclean all bin
 
 # =============================================================================
 
@@ -62,8 +62,6 @@ uninstall: remove
 $(CMD_LIST):
 	@mkdir -p $(BIN)
 	$(CC) $(CFLAGS) $(INCLUDE) "$(CMD)cmd_$@.c" $(OBJ) -o "$(BIN)$@"
-
-link:
 
 $(EXE): $(OBJ)
 	$(CC) $(CFLAGS) $(INCLUDE)  main.c $(OBJ) -o $(EXE)
