@@ -12,13 +12,9 @@ char	*lenfill(const char *str, char c, size_t len)
 	slen = strlen(str);
 	if (len > slen)
 		slen = len;
-	res = (char *)str;
-	pre = setalloc(c, (slen - strlen(str)) / 2);
-	if ((slen - strlen(str)) % 2)
-		post = setalloc(c, (slen - strlen(str)) / 2 + 1);
-	else
-		post = setalloc(c, (slen - strlen(str)) / 2);
-	strcat(pre, res);
+	res = setalloc(c, (slen - strlen(str)) / 2);
+	post = setalloc(c, (slen - strlen(str)) / 2);
+	strcat(res, str);
 	strcat(res, post);
 	return (res);
 }

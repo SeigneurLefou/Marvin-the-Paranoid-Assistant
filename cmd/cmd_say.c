@@ -8,12 +8,13 @@ int	main(int argc, char **argv)
 	int		fd;
 
 	i = 1;
+	txt = "Les arguments de votre commande sont invalides.";
 	line_size = 30;
 	fd = 1;
 	while (i < argc)
 	{
 		if ((!strcmp(argv[i], "-h")
-				|| !strcmp(argv[i], "--help")) && argv[i + 1])
+				|| !strcmp(argv[i], "--help")))
 		{
 			printf("SAY :\n\tA command to make Marvin talk.\nOPTIONS :\n\t-h/--help : print this help\n\t-ls/--linesize : Define a lline size for the bubble.\nUSAGE\n\tmarvin say content [-ls/--linesize size]");
 			return (0);
@@ -26,18 +27,10 @@ int	main(int argc, char **argv)
 			if (line_size > 80) // Modifier pour que ca s'adapte a la taille du terminal
 				line_size = 80;
 		}
-		else if (!txt)
-			txt = argv[i];
 		else
-		{
-			txt = "Les arguments de votre commande sont invalides.";
-			bubble(txt, line_size, 2);
-			return (1);
-		}
+			txt = argv[i];
 		i++;
 	}
-	if (!txt)
-		txt = "Les arguments de votre commande sont invalides.";
 	bubble(txt, line_size, fd);
 	return (0);
 }
