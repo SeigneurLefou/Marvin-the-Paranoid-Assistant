@@ -1,0 +1,33 @@
+name: 'Ubuntu with meson'
+
+on: 
+  pull_request:
+  push:
+    paths-ignore:
+      - '.gitignore'
+      - 'LICENSE'
+      - 'README.md'
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest]
+        platform: ['x64', 'x86']
+
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Clone by runner
+        uses: actions/checkout@v6
+      - name: Python
+        if: matrix.platform == 'x86'
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+      - name: Install Meson with pip
+        run: sudo pip3 install meson
+      - name: Build with meson
+        run: | 
+          meson setup --prefix=$PWD/ build
+          meson compile -C build
