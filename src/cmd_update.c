@@ -5,8 +5,6 @@ int	cmd_update(int argc, char **argv)
 	char	*home;
 	char	*command;
 
-	(void)argc;
-	(void)argv;
 	home = getenv("HOME");
 	if (!home)
 		return (1);

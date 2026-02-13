@@ -4,7 +4,7 @@ int	bubble(char *str, size_t size_len, int fd)
 {
 	size_t	len;
 	char	*fillstr;
-	
+
 	len = strlen(str);
 	if (len < size_len)
 		len = size_len;
