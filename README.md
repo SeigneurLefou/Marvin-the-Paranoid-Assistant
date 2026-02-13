@@ -1,6 +1,7 @@
 # Marvin the Paranoid Assistant
 
 Marvin is a terminal assistant who simplifies complex tasks with basic commands and more with macros, functions that are added by the user.
+It's Linux only, maybe it works on macOS, maybe not, it's not a priority in development.
 
 ## Usage
 

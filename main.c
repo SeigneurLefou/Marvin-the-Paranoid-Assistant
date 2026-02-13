@@ -1,5 +1,5 @@
-#include "libcmd.h"
-#include "list_cmd.h"
+#include "marvin.h"
+#include "global_variable.h"
 
 int	path_cmd(char *argv[], char *env[], char *path)
 {
@@ -62,6 +62,6 @@ int	main(int argc, char *argv[], char *env[])
 	result_cmd = path_cmd(argv, env, "/.marvin/bin/");
 	if (result_cmd >= 0)
 		return (result_cmd);
-	printf("Command doesn\'t exist.");
+	printf("Command doesn\'t exist.\n");
 	return (1);
 }

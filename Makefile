@@ -18,7 +18,7 @@ SRC =	$(DS)printable.c \
 
 CMD_PATH = includes/cmd_path.h
 
-CMD_LIST =	bubble
+CMD_LIST =	say
 
 # =============================================================================
 
