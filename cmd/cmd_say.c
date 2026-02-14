@@ -5,12 +5,12 @@ int	main(int argc, char **argv)
 	int		i;
 	char	*txt;
 	int		line_size;
-	int		fd;
+	bool	txt_is_define;
 
 	i = 1;
 	txt = "Les arguments de votre commande sont invalides.";
+	txt_is_define = false;
 	line_size = 30;
-	fd = 1;
 	while (i < argc)
 	{
 		if ((!strcmp(argv[i], "-h")
@@ -27,10 +27,18 @@ int	main(int argc, char **argv)
 			if (line_size > 80) // Modifier pour que ca s'adapte a la taille du terminal
 				line_size = 80;
 		}
-		else
+		else if (!txt_is_define)
+		{
 			txt = argv[i];
+			txt_is_define = true;
+		}
+		else
+		{
+			printf("SAY :\n\tA command to make Marvin talk.\nOPTIONS :\n\t-h/--help : print this help\n\t-ls/--linesize : Define a lline size for the bubble.\nUSAGE\n\tmarvin say content [-ls/--linesize size]");
+			return (0);
+		}
 		i++;
 	}
-	bubble(txt, line_size, fd);
+	bubble_printer(txt, line_size, 1);
 	return (0);
 }

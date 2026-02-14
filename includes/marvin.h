@@ -31,8 +31,10 @@ int	path_cmd(char *argv[], char *env[], char *path);
 int	integrate_cmd(int argc, char *argv[]);
 
 // Functions Utils
-int		bubble(char *str, size_t size_len, int fd);
-char	*lenfill(const char *str, char c, size_t len);
-char	*setalloc(char c, size_t len);
+char	**append_to_str_array(char **array, char *str);
+char	*set_alloc(char c, size_t len);
+char	**cut_sentences(char *str, unsigned int line_size);
+char	*centralize_text(const char *str, char c, size_t len);
+int		bubble_printer(char *str, size_t size_len, int fd);
 
 #endif
