@@ -14,7 +14,7 @@ inc = [include_directories('includes')]
 sources = [
   'src/alloc.c',
   'src/printable.c',
-  'src/warping.c',
+  'src/wraping.c',
   'src/cmd_help.c',
   'src/cmd_update.c',
 ]
