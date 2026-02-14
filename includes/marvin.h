@@ -6,7 +6,7 @@
 # include <unistd.h>
 # include <string.h>
 # include <sys/wait.h>
-# includes <stdbool.h>
+# include <stdbool.h>
 
 typedef int	(*t_cmd_function) (int argc, char **argv);
 
