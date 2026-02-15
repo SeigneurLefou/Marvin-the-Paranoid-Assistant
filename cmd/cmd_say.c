@@ -8,7 +8,7 @@ int	main(int argc, char **argv)
 	bool	txt_is_define;
 
 	i = 1;
-	txt = "Les arguments de votre commande sont invalides.";
+	txt = "Les arguments de votre commande sont invalides.\0";
 	txt_is_define = false;
 	line_size = 30;
 	while (i < argc)
