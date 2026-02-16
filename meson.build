@@ -11,12 +11,12 @@ inc = [include_directories('includes')]
 
 sources = [
   'main.c',
-  'src/alloc.c',
-  'src/printable.c',
-  'src/wraping.c',
-  'cmd/cmd_help.c',
-  'cmd/cmd_say.c',
-  'cmd/cmd_update.c',
+  'src/utils/alloc.c',
+  'src/utils/printable.c',
+  'src/utils/wraping.c',
+  'src/cmd/cmd_help.c',
+  'src/cmd/cmd_say.c',
+  'src/cmd/cmd_update.c',
 ]
 
 marvin = executable(
