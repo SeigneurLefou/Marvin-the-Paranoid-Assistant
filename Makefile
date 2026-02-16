@@ -6,19 +6,17 @@ CC = cc
 CFLAGS = -Wall -Wextra -w -g
 INCLUDE = -Iincludes
 BUILD = $(PROJ)build/
-BIN = $(PROJ)bin/
 USRBIN = $(PROJ)usr/bin/
 DS = $(PROJ)src/
 CMD = $(PROJ)cmd/
 SRC =	$(DS)printable.c \
         $(DS)wraping.c \
         $(DS)alloc.c \
-        $(DS)cmd_help.c \
-        $(DS)cmd_update.c
+        $(CMD)cmd_help.c \
+        $(CMD)cmd_update.c\
+        $(CMD)cmd_say.c
 
 CMD_PATH =	includes/cmd_path.h
-
-CMD_LIST =	say
 
 # =============================================================================
 
@@ -49,7 +47,6 @@ clean:
 	@echo -e "DELETE $(BUILD) FOLDER\n"
 
 fclean: clean
-	@rm -f $(HOME)/.local/bin/$(EXE)
 	@echo -e "DELETE $(EXE)\n"
 
 uninstall: remove
@@ -60,16 +57,11 @@ uninstall: remove
 
 # === INSTALL RULES ===========================================================
 
-$(CMD_LIST):
-	@mkdir -p $(BIN)
-	@$(CC) $(CFLAGS) $(INCLUDE) "$(CMD)cmd_$@.c" $(OBJ) -o "$(BIN)$@"
-	@echo -e "CC $(CMD)cmd_$@\n\t>$(BIN)$@\n"
-
 $(EXE): $(OBJ)
 	@$(CC) $(CFLAGS) $(INCLUDE)  main.c $(OBJ) -o $(EXE)
 	@echo -e "CC $<\n\t>$@\n"
 
-build: $(EXE) bin
+build: $(EXE)
 	@mkdir -p $(USRBIN)
 	@mv $(EXE) $(HOME)/.local/bin/
 	@echo -e "You can enjoy now !"

@@ -26,6 +26,7 @@ typedef struct s_cmd_path
 // Builtin Command
 int	cmd_help(int argc, char **argv);
 int	cmd_update(int argc, char **argv);
+int	cmd_say(int argc, char **argv);
 
 // Commands Utils
 int	path_cmd(char *argv[], char *env[], char *path);

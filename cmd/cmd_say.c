@@ -1,6 +1,6 @@
 #include "marvin.h"
 
-int	main(int argc, char **argv)
+int	cmd_say(int argc, char **argv)
 {
 	int		i;
 	char	*txt;
@@ -24,7 +24,7 @@ int	main(int argc, char **argv)
 		{
 			i++;
 			line_size = atoi(argv[i]);
-			if (line_size > 80) // Modifier pour que ca s'adapte a la taille du terminal
+			if (line_size > 80)
 				line_size = 80;
 		}
 		else if (!txt_is_define)

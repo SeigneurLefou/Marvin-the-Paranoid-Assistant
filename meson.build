@@ -15,15 +15,10 @@ sources = [
   'src/alloc.c',
   'src/printable.c',
   'src/wraping.c',
-  'src/cmd_help.c',
-  'src/cmd_update.c',
-]
-
-command = [
+  'cmd/cmd_help.c',
   'cmd/cmd_say.c',
+  'cmd/cmd_update.c',
 ]
-
-list_command = []
 
 foreach file : command
   name_command = fs.stem(file)
