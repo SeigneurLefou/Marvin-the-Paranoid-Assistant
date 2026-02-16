@@ -8,10 +8,11 @@ INCLUDE = -Iincludes
 BUILD = $(PROJ)build/
 USRBIN = $(PROJ)usr/bin/
 DS = $(PROJ)src/
-CMD = $(PROJ)cmd/
-SRC =	$(DS)printable.c \
-        $(DS)wraping.c \
-        $(DS)alloc.c \
+CMD = $(DS)cmd/
+UTL = $(DS)utils/
+SRC =	$(UTL)printable.c \
+        $(UTL)wraping.c \
+        $(UTL)alloc.c \
         $(CMD)cmd_help.c \
         $(CMD)cmd_update.c\
         $(CMD)cmd_say.c
@@ -25,6 +26,8 @@ OBJ = $(patsubst $(DS)%.c,$(BUILD)%.o,$(SRC))
 
 $(BUILD)%.o: $(DS)%.c
 	@mkdir -p $(BUILD)
+	@mkdir -p $(BUILD)cmd/
+	@mkdir -p $(BUILD)utils/
 	@$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 	@echo -e "CC $<\n\t>$@\n"
 
