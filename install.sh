@@ -1,12 +1,15 @@
 #!/bin/bash
 # Move to home
 cd ~
+mkdir -p .local
+mkdir -p .local/bin
 # Remove old .marvin
 rm -Rf .marvin
 # Clone the repo
 git clone https://www.github.com/SeigneurLefou/Marvin-the-Paranoid-Assistant .marvin
 # Move to .marvin
 cd .marvin
+
 # Add .local/bin to the PATH
 export PATH=$PATH:$HOME/.local/bin/
 # For security add previous line in the config file
