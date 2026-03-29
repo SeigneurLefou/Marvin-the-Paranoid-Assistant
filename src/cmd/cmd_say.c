@@ -24,8 +24,8 @@ int	cmd_say(int argc, char **argv)
 		{
 			i++;
 			line_size = atoi(argv[i]);
-			if (line_size > 80)
-				line_size = 80;
+			if (line_size < 2 || line_size > 100)
+				line_size = 100;
 		}
 		else if (!txt_is_define)
 		{

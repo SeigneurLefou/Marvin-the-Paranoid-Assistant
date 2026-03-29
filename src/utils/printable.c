@@ -8,11 +8,6 @@ int	bubble_printer(char *str, size_t size_len, int fd)
 	char	**sentences;
 	int		i;
 
-	if (strlen(str) < size_len)
-	{
-		write(fd, str, strlen(str));
-		return (0);
-	}
 	sentences = cut_sentences(str, size_len);
 	i = 0;
 	while (sentences && sentences[i])
@@ -21,6 +16,8 @@ int	bubble_printer(char *str, size_t size_len, int fd)
 		write(fd, fillstr, strlen(fillstr));
 		write(fd, "\n", 1);
 		i++;
+		free(fillstr);
 	}
+	free_double_array(sentences);
 	return (0);
 }

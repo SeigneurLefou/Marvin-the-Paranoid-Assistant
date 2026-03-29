@@ -61,7 +61,7 @@ uninstall: remove
 # === INSTALL RULES ===========================================================
 
 $(EXE): $(OBJ)
-	@$(CC) $(CFLAGS) $(INCLUDE)  main.c $(OBJ) -o $(EXE)
+	@$(CC) $(CFLAGS) $(INCLUDE) src/main.c $(OBJ) -o $(EXE)
 	@echo -e "CC $<\n\t>$@\n"
 
 build: $(EXE)

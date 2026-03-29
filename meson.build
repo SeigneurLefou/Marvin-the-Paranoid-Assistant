@@ -10,7 +10,7 @@ project(
 inc = [include_directories('includes')]
 
 sources = [
-  'main.c',
+  'src/main.c',
   'src/utils/alloc.c',
   'src/utils/printable.c',
   'src/utils/wraping.c',
