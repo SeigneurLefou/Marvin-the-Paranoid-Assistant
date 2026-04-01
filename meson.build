@@ -1,5 +1,5 @@
 project(
-  '.marvin',
+  'marvin',
   'c',
   meson_version : '>= 0.56.0',
   version : '0.0.1',
@@ -7,9 +7,9 @@ project(
   default_options : ['warning_level=3', 'optimization=3'],
 )
 
-inc = [include_directories('includes')]
+inc = include_directories('includes')
 
-sources = [
+sources = files(
   'src/main.c',
   'src/utils/alloc.c',
   'src/utils/printable.c',
@@ -18,7 +18,7 @@ sources = [
   'src/cmd/cmd_help.c',
   'src/cmd/cmd_say.c',
   'src/cmd/cmd_update.c',
-]
+)
 
 marvin = executable(
   'marvin',
