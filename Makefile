@@ -1,6 +1,7 @@
 # === VARIABLES ===============================================================
-if [[ -z $(MARV) ]]
+ifeq ($(MARV),)
 	MARV = .marvin/
+endif
 PROJ = $(HOME)/$(MARV)
 EXE = marvin
 CC = cc

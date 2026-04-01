@@ -37,6 +37,8 @@ char	**append_to_str_array(char **array, char *str);
 char	*set_alloc(char c, size_t len);
 size_t	double_array_len(char **array);
 void	free_double_array(char **array);
+void	*ft_alloc_char(char *s1, char *s2);
+char	*strjoin(char *s1, char *s2);
 
 char	**cut_sentences(char *str, unsigned int line_size);
 int		take_line(char *str, char **to_add, unsigned int line_size);
