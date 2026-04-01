@@ -1,6 +1,6 @@
 # === VARIABLES ===============================================================
-#MARV = Github/MtPA/
-MARV = .marvin/
+if [[ -z $(MARV) ]]
+	MARV = .marvin/
 PROJ = $(HOME)/$(MARV)
 EXE = marvin
 CC = cc
@@ -27,6 +27,7 @@ CMD_PATH =	includes/cmd_path.h
 OBJ = $(patsubst $(DS)%.c,$(BUILD)%.o,$(SRC))
 
 $(BUILD)%.o: $(DS)%.c
+	@mkdir -p $(PROJ)
 	@mkdir -p $(BUILD)
 	@mkdir -p $(BUILD)cmd/
 	@mkdir -p $(BUILD)utils/
@@ -63,10 +64,12 @@ uninstall: remove
 # === INSTALL RULES ===========================================================
 
 $(EXE): $(OBJ)
-	@$(CC) $(CFLAGS) $(INCLUDE) src/main.c $(OBJ) -o $(EXE)
+	cd $(PROJ)
+	@$(CC) $(CFLAGS) $(INCLUDE) $(DS)/main.c $(OBJ) -o $(EXE)
 	@echo -e "CC $<\n\t>$@\n"
 
 build: $(EXE)
+	cd $(PROJ)
 	@mkdir -p $(USRBIN)
 	@mv $(EXE) $(HOME)/.local/bin/
 	@echo -e "You can enjoy now !"

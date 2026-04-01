@@ -1,7 +1,4 @@
 #include "marvin.h"
-#include <stdlib.h>
-#include <string.h>
-#include <stdio.h>
 
 char *centralize_text(char *str, char c, size_t len) {
 	char	*res;
@@ -29,7 +26,6 @@ char *centralize_text(char *str, char c, size_t len) {
     for (size_t i = 0; i < left_padding; i++)
         res[i] = c;
     strcpy(&res[left_padding], str);
-	printf("%s\n", str);
 	free(str);
     for (size_t i = 0; i < right_padding; i++)
         res[left_padding + str_len + i] = c;
