@@ -3,8 +3,17 @@ name: Make on Ubuntu
 on:
   push:
     branches: [ "main" ]
+    paths-ignore:
+      - '.gitignore'
+      - 'LICENSE'
+      - 'README.md'
+
   pull_request:
     branches: [ "main" ]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   build:
@@ -12,9 +21,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
-    - name: Ubuntu with make
-      run: |
-        make fclean
-        make re
-        make build
+      - uses: actions/checkout@v6
+      - name: Ubuntu with make
+        run: |
+          make fclean
+          make re
+          make build
