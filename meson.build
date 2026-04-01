@@ -13,6 +13,7 @@ sources = [
   'src/main.c',
   'src/utils/alloc.c',
   'src/utils/printable.c',
+  'src/utils/double_array.c',
   'src/utils/wraping.c',
   'src/cmd/cmd_help.c',
   'src/cmd/cmd_say.c',

@@ -1,6 +1,6 @@
 # === VARIABLES ===============================================================
-MARV = Github/MtPA/
-#MARV = .marvin/
+#MARV = Github/MtPA/
+MARV = .marvin/
 PROJ = $(HOME)/$(MARV)
 EXE = marvin
 CC = cc
