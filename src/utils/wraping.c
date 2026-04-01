@@ -3,7 +3,7 @@
 #include <string.h>
 #include <stdio.h>
 
-char *centralize_text(const char *str, char c, size_t len) {
+char *centralize_text(char *str, char c, size_t len) {
 	char	*res;
 	size_t	str_len;
     size_t	total_padding;
@@ -16,6 +16,7 @@ char *centralize_text(const char *str, char c, size_t len) {
     if (str_len >= len)
 	{
 		res = strdup(str);
+		free(str);
         return res;
     }
     total_padding = len - str_len;
@@ -28,6 +29,8 @@ char *centralize_text(const char *str, char c, size_t len) {
     for (size_t i = 0; i < left_padding; i++)
         res[i] = c;
     strcpy(&res[left_padding], str);
+	printf("%s\n", str);
+	free(str);
     for (size_t i = 0; i < right_padding; i++)
         res[left_padding + str_len + i] = c;
     return (res);
@@ -88,6 +91,7 @@ char	**cut_sentences(char *str, unsigned int line_size)
 	{
 		len_end = take_line(str, &to_add, line_size);
 		res = append_to_str_array(res, to_add);
+		free(to_add);
 		if (!len_end)
 			break;
 		str = &str[len_end];

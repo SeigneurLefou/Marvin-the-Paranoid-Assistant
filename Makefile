@@ -1,5 +1,6 @@
 # === VARIABLES ===============================================================
-MARV = .marvin/
+MARV = Github/MtPA/
+#MARV = .marvin/
 PROJ = $(HOME)/$(MARV)
 EXE = marvin
 CC = cc
@@ -10,11 +11,12 @@ USRBIN = $(PROJ)usr/bin/
 DS = $(PROJ)src/
 CMD = $(DS)cmd/
 UTL = $(DS)utils/
-SRC =	$(UTL)printable.c \
-        $(UTL)wraping.c \
-        $(UTL)alloc.c \
-        $(CMD)cmd_help.c \
-        $(CMD)cmd_update.c\
+SRC =	$(UTL)printable.c		\
+        $(UTL)wraping.c			\
+        $(UTL)alloc.c			\
+        $(UTL)double_array.c	\
+        $(CMD)cmd_help.c		\
+        $(CMD)cmd_update.c		\
         $(CMD)cmd_say.c
 
 CMD_PATH =	includes/cmd_path.h
