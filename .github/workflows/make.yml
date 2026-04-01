@@ -21,9 +21,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
-    - name: Ubuntu with make
-      run: |
-        make fclean
-        make re
-        make build
+      - uses: actions/checkout@v6
+      - name: Ubuntu with make
+        run: |
+          make fclean
+          make re
+          make build
