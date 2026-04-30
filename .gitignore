@@ -5,5 +5,5 @@ build/
 */*.a
 *swp
 bin/
-builddir/
+bundle/
 usr/

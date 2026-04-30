@@ -1,15 +1,11 @@
 # === VARIABLES ===============================================================
-ifeq ($(MARV),)
-	MARV = .marvin/
-endif
-PROJ = $(HOME)/$(MARV)
 EXE = marvin
 CC = cc
 CFLAGS = -Wall -Wextra -w -g
 INCLUDE = -Iincludes
-BUILD = $(PROJ)build/
-USRBIN = $(PROJ)usr/bin/
-DS = $(PROJ)src/
+BUILD = $(MARV)build/
+USRBIN = $(MARV)usr/bin/
+DS = $(MARV)src/
 CMD = $(DS)cmd/
 UTL = $(DS)utils/
 SRC =	$(UTL)printable.c		\
@@ -28,7 +24,6 @@ CMD_PATH =	includes/cmd_path.h
 OBJ = $(patsubst $(DS)%.c,$(BUILD)%.o,$(SRC))
 
 $(BUILD)%.o: $(DS)%.c
-	@mkdir -p $(PROJ)
 	@mkdir -p $(BUILD)
 	@mkdir -p $(BUILD)cmd/
 	@mkdir -p $(BUILD)utils/
@@ -57,7 +52,7 @@ fclean: clean
 	@echo -e "DELETE $(EXE)\n"
 
 uninstall: remove
-	@rm -Rf $(PROJ)
+	@rm -Rf $(MARV)
 	@echo -e "Good bye..."
 	
 # =============================================================================
@@ -65,21 +60,21 @@ uninstall: remove
 # === INSTALL RULES ===========================================================
 
 $(EXE): $(OBJ)
-	cd $(PROJ)
+	cd $(MARV)
 	@$(CC) $(CFLAGS) $(INCLUDE) $(DS)/main.c $(OBJ) -o $(EXE)
 	@echo -e "CC $<\n\t>$@\n"
 
 build: $(EXE)
-	cd $(PROJ)
+	cd $(MARV)
 	@mkdir -p $(USRBIN)
 	@mv $(EXE) $(HOME)/.local/bin/
 	@echo -e "You can enjoy now !"
 
 update:
-	@cd $(PROJ)
+	@cd $(MARV)
 	@git pull
 	@echo -e "PULL NEW DATA FROM THE PUBLIC REPO\n"
-	@make -C $(PROJ) build
+	@make -C $(MARV) build
 
 # =============================================================================
 

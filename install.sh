@@ -12,9 +12,12 @@ cd .marvin
 
 # Add .local/bin to the PATH
 export PATH=$PATH:$HOME/.local/bin/
+export MARV=$HOME/.marvin/
 # For security add previous line in the config file
-echo "export PATH=$PATH:$HOME/.local/bin/" >> ~/.zshrc
+echo 'export PATH=$PATH:$HOME/.local/bin/' >> ~/.zshrc
+echo 'export MARV=$HOME/.marvin' >> ~/.zshrc
 # For security add previous line in the config file
-echo "export PATH=$PATH:$HOME/.local/bin/" >> ~/.bashrc
+echo 'export PATH=$PATH:$HOME/.local/bin/' >> ~/.bashrc
+echo 'export MARV=$HOME/.marvin' >> ~/.bashrc
 # Build the binary
 make build
