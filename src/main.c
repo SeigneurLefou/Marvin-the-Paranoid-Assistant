@@ -6,11 +6,11 @@ int	path_cmd(char *argv[], char *env[], char *path)
 	char	*cmd_path;
 	pid_t	pid;
 
-	cmd_path = malloc(strlen(getenv("HOME"))
+	cmd_path = malloc(strlen(getenv("MARV"))
 			+ strlen(path) + strlen(argv[1]) + 2);
 	if (!cmd_path)
 		return (-1);
-	strcpy(cmd_path, getenv("HOME"));
+	strcpy(cmd_path, getenv("MARV"));
 	strcat(cmd_path, path);
 	strcat(cmd_path, argv[1]);
 	if (!access(cmd_path, X_OK))
@@ -56,10 +56,10 @@ int	main(int argc, char *argv[], char *env[])
 	result_cmd = integrate_cmd(argc, argv);
 	if (result_cmd >= 0)
 		return (result_cmd);
-	result_cmd = path_cmd(argv, env, "/.marvin/usr/bin/");
+	result_cmd = path_cmd(argv, env, "/bin/");
 	if (result_cmd >= 0)
 		return (result_cmd);
-	result_cmd = path_cmd(argv, env, "/.marvin/bin/");
+	result_cmd = path_cmd(argv, env, "/bin/");
 	if (result_cmd >= 0)
 		return (result_cmd);
 	printf("Command doesn't exist.\n");

@@ -1,20 +1,19 @@
 #!/bin/bash
-mkdir -p ~/.local
 mkdir -p ~/.local/bin
-# Remove old .marvin
-rm -Rf ~/.marvin
-# Clone the repo
-git clone https://www.github.com/SeigneurLefou/Marvin-the-Paranoid-Assistant ~/.marvin
-# Move to .marvin
-make -C ~/.marvin build
 
 # Add .local/bin to the PATH
-export PATH=$PATH:$HOME/.local/bin/
-export MARV=$HOME/.marvin/
-# For security add previous line in the config file
-echo 'export PATH=$PATH:$HOME/.local/bin/' >> ~/.zshrc
-echo 'export MARV=$HOME/.marvin' >> ~/.zshrc
-# For security add previous line in the config file
-echo 'export PATH=$PATH:$HOME/.local/bin/' >> ~/.bashrc
-echo 'export MARV=$HOME/.marvin' >> ~/.bashrc
-# Build the binary
+export PATH="$PATH:$HOME/.local/bin/"
+export MARV="$PWD/"
+
+make build
+
+# zsh install
+echo "export PATH=\$PATH:\$HOME/.local/bin/" >> ~/.zshrc
+echo "export MARV=$PWD" >> ~/.zshrc
+
+# bash install
+echo "export PATH=\$PATH:\$HOME/.local/bin/" >> ~/.bashrc
+echo "export MARV=$PWD" >> ~/.bashrc
+
+# global install
+echo -e "Add this line to your shell config file\necho 'export PATH=\$PATH:\$HOME/.local/bin/'\necho 'export MARV=$PWD'"

@@ -38,6 +38,7 @@ char	**bubble_create(char **sentences, size_t size_len)
 	bubble_array[index] = strdup("  |/");
 	return (bubble_array);
 }
+
 char	**get_marvin(void)
 {
 	char	*line;
@@ -48,8 +49,8 @@ char	**get_marvin(void)
 	size_t	len;
 	char	*path;
 
-	path = strdup(getenv("HOME"));
-	path = strjoin(path, "/.marvin/media/sprite");
+	path = strdup(getenv("MARV"));
+	path = strjoin(path, "/media/sprite");
 	file = fopen(path, "r");
 	free(path);
     if (!file)

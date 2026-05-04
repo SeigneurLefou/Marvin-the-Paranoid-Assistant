@@ -73,6 +73,7 @@ build: $(EXE)
 update:
 	@cd $(MARV)
 	@git pull
+	@./install.sh
 	@echo -e "PULL NEW DATA FROM THE PUBLIC REPO\n"
 	@make -C $(MARV) build
 
