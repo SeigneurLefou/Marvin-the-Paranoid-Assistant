@@ -39,6 +39,20 @@ char	**bubble_create(char **sentences, size_t size_len)
 	return (bubble_array);
 }
 
+char	**marvin_say_create(char **bubble, size_t size_len)
+{
+	size_t	len;
+	char	**marvin_sprite;
+	size_t	i;
+
+	marvin_sprite = get_marvin();
+	if (!marvin_sprite)
+		return (NULL);
+	len = double_array_len(bubble);
+	i = 0;
+	return (marvin_sprite);
+}
+
 char	**get_marvin(void)
 {
 	char	*line;
