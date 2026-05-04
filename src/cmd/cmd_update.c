@@ -2,17 +2,17 @@
 
 int	cmd_update(int argc, char **argv)
 {
-	char	*home;
+	char	*marv;
 	char	*command;
 
-	home = getenv("HOME");
-	if (!home)
+	marv = getenv("MARV");
+	if (!marv)
 		return (1);
-	command = malloc(strlen("make -C ") + strlen(home)
-			+ strlen("/.marvin update") + 1);
+	command = malloc(strlen("make -C ") + strlen(marv)
+			+ strlen(" update") + 1);
 	strcpy(command, "make -C ");
-	strcat(command, home);
-	strcat(command, "/.marvin update");
+	strcat(command, marv);
+	strcat(command, " update");
 	system(command);
 	free(command);
 	if (!command)

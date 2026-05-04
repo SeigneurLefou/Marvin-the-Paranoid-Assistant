@@ -39,12 +39,71 @@ char	**bubble_create(char **sentences, size_t size_len)
 	return (bubble_array);
 }
 
+char	**get_marvin(void)
+{
+	char	*line;
+	ssize_t	read;
+	char	**marvin_sprite;
+	FILE	*file;
+	size_t	size;
+	size_t	len;
+	char	*path;
+
+	path = strdup(getenv("MARV"));
+	path = strjoin(path, "/media/sprite");
+	file = fopen(path, "r");
+	free(path);
+    if (!file)
+	{
+		perror("fopen");
+		return NULL;
+	}
+	line = NULL;
+	size = 0;
+	read = getline(&line, &len, file);
+	marvin_sprite = NULL;
+	while (read != -1)
+	{
+		marvin_sprite = realloc(marvin_sprite, (size + 1) * sizeof(char *));
+        if (!marvin_sprite) { free(line); fclose(file); return NULL; }
+        marvin_sprite[size] = strdup(line);
+        if (!marvin_sprite[size])
+		{
+			fclose(file);
+			return NULL;
+		}
+        size++;
+		read = getline(&line, &len, file);
+	}
+	free(line);
+	fclose(file);
+	marvin_sprite = realloc(marvin_sprite, (size + 1) * sizeof(char *));
+    if (marvin_sprite)
+		marvin_sprite[size] = NULL;
+	return (marvin_sprite);
+}
+
+char	**marvin_say_create(char **bubble, size_t size_len)
+{
+	size_t	len;
+	char	**marvin_sprite;
+	size_t	i;
+
+	marvin_sprite = get_marvin();
+	if (!marvin_sprite)
+		return (NULL);
+	len = double_array_len(bubble);
+	i = 0;
+	return (marvin_sprite);
+}
+
 int	bubble_printer(char *str, size_t size_len, int fd)
 {
 	size_t	len;
 	char	*fillstr;
 	char	**sentences;
 	char	**bubble;
+	char	**marvin_say;
 	int		i;
 
 	sentences = cut_sentences(str, size_len);
@@ -55,12 +114,21 @@ int	bubble_printer(char *str, size_t size_len, int fd)
 		i++;
 	}
 	bubble = bubble_create(sentences, size_len);
+	marvin_say = marvin_say_create(bubble, size_len);
 	i = 0;
 	while (bubble && bubble[i])
 	{
+		printf("%s\n", bubble[i]);
+		i++;
+	}
+	i = 0;
+	while (marvin_say && marvin_say[i])
+	{
+		printf("%s", marvin_say[i]);
 		i++;
 	}
 	free_double_array(sentences);
 	free_double_array(bubble);
+	free_double_array(marvin_say);
 	return (0);
 }
