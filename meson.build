@@ -1,6 +1,6 @@
 project(
   'marvin',
-  'c',
+  'cpp',
   meson_version : '>= 0.56.0',
   version : '0.0.1',
   license : 'GNU',
@@ -10,14 +10,7 @@ project(
 inc = include_directories('includes')
 
 sources = files(
-  'src/main.c',
-  'src/utils/alloc.c',
-  'src/utils/printable.c',
-  'src/utils/double_array.c',
-  'src/utils/wraping.c',
-  'src/cmd/cmd_help.c',
-  'src/cmd/cmd_say.c',
-  'src/cmd/cmd_update.c',
+  'src/main.cpp',
 )
 
 marvin = executable(

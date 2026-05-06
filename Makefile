@@ -1,33 +1,25 @@
 # === VARIABLES ===============================================================
-EXE = marvin
-CC = cc
-CFLAGS = -Wall -Wextra -w -g
+NAME = marvin
+CXX = g++
+CFLAGS = -Wall -Wextra -g
 INCLUDE = -Iincludes
-BUILD = $(MARV)build/
-USRBIN = $(MARV)usr/bin/
-DS = $(MARV)src/
-CMD = $(DS)cmd/
-UTL = $(DS)utils/
-SRC =	$(UTL)printable.c		\
-        $(UTL)wraping.c			\
-        $(UTL)alloc.c			\
-        $(UTL)double_array.c	\
-        $(CMD)cmd_help.c		\
-        $(CMD)cmd_update.c		\
-        $(CMD)cmd_say.c
 
-CMD_PATH =	includes/cmd_path.h
+ifndef $(MARV)
+	export MARV=$(PWD)
+endif
+
+BUILD = $(MARV)/build
+DS = $(MARV)/src
+SRC = $(DS)/main.cpp
 
 # =============================================================================
 
 # === OBJECT RULES ============================================================
-OBJ = $(patsubst $(DS)%.c,$(BUILD)%.o,$(SRC))
+OBJ = $(patsubst $(DS)/%.c,$(BUILD)/%.o,$(SRC))
 
 $(BUILD)%.o: $(DS)%.c
 	@mkdir -p $(BUILD)
-	@mkdir -p $(BUILD)cmd/
-	@mkdir -p $(BUILD)utils/
-	@$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
+	@$(CXX) $(CFLAGS) $(INCLUDE) -c $< -o $@
 	@echo -e "CC $<\n\t>$@\n"
 
 # =============================================================================
@@ -36,9 +28,7 @@ $(BUILD)%.o: $(DS)%.c
 
 all: build
 
-bin: $(CMD_LIST)
-
-re: fclean all bin
+re: fclean all
 
 # =============================================================================
 
@@ -49,9 +39,9 @@ clean:
 	@echo -e "DELETE $(BUILD) FOLDER\n"
 
 fclean: clean
-	@echo -e "DELETE $(EXE)\n"
+	@echo -e "DELETE $(NAME)\n"
 
-uninstall: remove
+remove:
 	@rm -Rf $(MARV)
 	@echo -e "Good bye..."
 	
@@ -59,15 +49,12 @@ uninstall: remove
 
 # === INSTALL RULES ===========================================================
 
-$(EXE): $(OBJ)
-	cd $(MARV)
-	@$(CC) $(CFLAGS) $(INCLUDE) $(DS)/main.c $(OBJ) -o $(EXE)
+$(NAME): $(OBJ)
+	@$(CXX) $(CFLAGS) $(INCLUDE) $(OBJ) -o $(NAME)
 	@echo -e "CC $<\n\t>$@\n"
 
-build: $(EXE)
-	cd $(MARV)
-	@mkdir -p $(USRBIN)
-	@mv $(EXE) $(HOME)/.local/bin/
+build: $(NAME)
+	@cp $(MARV)/$(NAME) $(HOME)/.local/bin/
 	@echo -e "You can enjoy now !"
 
 update:
@@ -79,4 +66,4 @@ update:
 
 # =============================================================================
 
-.PHONY: clean fclean uninstall re link build all
+.PHONY: clean fclean remove re build all
