@@ -62,4 +62,4 @@ Bundles are remote extensions developed by users that can be managed via dedicat
 
 ## Contributions
 
-To suggest a new feature or report a bug, please open an Issue on the official GitHub repository. Contributions via Pull Requests are welcome following technical review.
+To suggest a new feature or report a bug, please open an Issue on the official GitHub repository. Contributions via Pull Requests are welcome following technical review. Precise the usage of any LLM in your pull request and don't vibe code.
