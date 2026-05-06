@@ -1,58 +1,65 @@
-# Marvin the Paranoid Assistant
+# Marvin the Paranoid Assistant (MPA)
 
-Marvin is a terminal assistant who simplifies complex tasks with basic commands and more with macros, functions that are added by the user.
-It's Linux only, maybe it works on macOS, maybe not, it's not a priority in development.
+Marvin is a Linux terminal command assistant developed in C++. It acts as a command wrapper capable of executing built-in functions, external modules (bundles), and system binaries, while providing a visual interface through ASCII art.
 
-## Usage
+## Search Architecture
 
-If you want to add your own command the actual methode is to move your binary to the folder `~/.marvin/usr/bin/`
+When a command is submitted, Marvin applies the following priority hierarchy:
+1. **Builtins**: Native functions compiled directly into the application core (hash table lookup).
+2. **Bundles**: Binaries located in the structured directory `bundles/[username].[repo]/bin/`.
+3. **User Bin**: Binaries manually added to `usr/bin/`.
+4. **System**: Automatic search within the user's PATH.
 
-## Commands
+## Installation
+
+To download Marvin, please clone the repository and navigate into it (the name .marvin is optional):
+```bash
+git clone https://github.com/SeigneurLefou/Marvin-the-Paranoid-Assistant .marvin
+cd .marvin
+```
+
+Then, run the installation script:
+```bash
+./install.sh
+```
+
+## Built-in Commands
 
 | Command | Description |
 | --- | --- |
-| update | A command to update Marvin to the next version |
+| --help, -h | Displays help and command syntax. |
+| update | Updates the Marvin directory and rebuilds the project. |
+| whereis | Identifies the location of a binary and detects naming conflicts. |
+| search | Recursive search for files or directories with depth management. |
 
-## Download
+## Bundle Management
 
-To download Marvin, you can use this command in your shell terminal.
-```bash
-curl https://raw.githubusercontent.com/SeigneurLefou/Marvin-the-Paranoid-Assistant/refs/heads/main/install.sh | sh
-```
+Bundles are remote extensions developed by users that can be managed via dedicated commands:
 
-If it doesn't work, add this command to your config file :
-```bash
-export PATH=$PATH:$HOME/.local/bin/
-```
+| Command | Description |
+| --- | --- |
+| install | Clones and installs a bundle from a remote repository. |
+| list | Lists available bundles (use the `--installed` flag for local modules). |
+| remove | Completely uninstalls a bundle. |
+| load | Updates and recompiles an existing module. |
 
-## User Contributions
+## Project Roadmap
 
-If you have ideas for useful commands or features, feel free to open an issue to present your suggestion ! If the idea you suggest is not universal, give it as an add-on.
+### Infrastructure and Core
+- [x] Installation script with automatic PATH export.
+- [x] Dynamic MARV variable in the Makefile for uninstallation.
+- [ ] Complete codebase migration to C++17/20 standard.
+- [ ] Implementation of core built-in commands.
+- [ ] Implementation of the Search command.
 
-## Download Roadmap
+### Official Modules
+- [ ] Todo-list: Task management with prioritization and reordering (add, move, remove, clear, list, check).
+- [ ] Chat: Client-server communication via POSIX sockets (server-chat, client-chat).
 
-- [x] Add download script with export in PATH.
-- [ ] Add graphic annotation to the build and remove functions.
-- [x] Add PWD variable in the Makefile for a deinstall command more powerful.
+### Ecosystem
+- [ ] Creation of a centralized repository for add-ons and themes.
+- [ ] Technical documentation website with a marketplace for bundles.
 
-## Basic Command Roadmap
+## Contributions
 
-- [ ] Add basic printable commands like `bbl`, `albbl`, or `show`.
-- [ ] Add `shutdown` command.
-- [ ] Add `reboot` command.
-- [ ] Add `timer` command.
-- [ ] Add `date` command with flags for syntax.
-- [ ] Add `search` command, a more powerful version of cd.
-- [ ] Add basic universal commands (based on user ideas).
-
-## Add-on Roadmap 
-
-- [ ] Create a separate repository for add-ons, including themes and bundles for less universal utilities.
-- [ ] Add install command for installing add-ons.
-- [ ] Add load command for load add-ons.
-- [ ] Add uninstall command for uninstall add-ons.
-
-## Other (If Time Permits)
-
-- [ ] Create the Marvin website to centralize Marvin downloads, Add-ons, themes, function bundles, and more !
-
+To suggest a new feature or report a bug, please open an Issue on the official GitHub repository. Contributions via Pull Requests are welcome following technical review.
