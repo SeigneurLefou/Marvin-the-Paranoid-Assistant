@@ -1,4 +1,5 @@
 # === VARIABLES ===============================================================
+
 NAME = marvin
 CXX = g++
 CFLAGS = -Wall -Wextra -g
@@ -8,17 +9,25 @@ ifndef $(MARV)
 	export MARV=$(PWD)
 endif
 
-BUILD = $(MARV)/build
-DS = $(MARV)/src
-SRC = $(DS)/main.cpp
+BUILD_DIR = $(MARV)/build
+SRC_DIR = $(MARV)/src
+OUT_DIRS := $(BUILD_DIR)/$(SRC_DIR)
+SRC = $(SRC_DIR)/main.cpp
+
+# =============================================================================
+
+# === INCLUDES ================================================================
+
+include $(SRC_DIR)/builtins/builtins.make
 
 # =============================================================================
 
 # === OBJECT RULES ============================================================
-OBJ = $(patsubst $(DS)/%.c,$(BUILD)/%.o,$(SRC))
 
-$(BUILD)%.o: $(DS)%.c
-	@mkdir -p $(BUILD)
+OBJ = $(patsubst $(SRC_DIR)/%.c,$(BUILD_DIR)/%.o,$(SRC))
+
+$(BUILD)%.o: $(SRC_DIR)%.c
+	@mkdir -p $(BUILD_DIR)
 	@$(CXX) $(CFLAGS) $(INCLUDE) -c $< -o $@
 	@echo -e "CC $<\n\t>$@\n"
 
@@ -35,8 +44,8 @@ re: fclean all
 # === CLEAN RULES =============================================================
 
 clean: 
-	@rm -Rf "$(BUILD)"
-	@echo -e "DELETE $(BUILD) FOLDER\n"
+	@rm -Rf "$(BUILD_DIR)"
+	@echo -e "DELETE $(BUILD_DIR) FOLDER\n"
 
 fclean: clean
 	@echo -e "DELETE $(NAME)\n"
